@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Animales index{% endblock %}
+
+{% block body %}
+    <h1>Animales index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Especie</th>
+                <th>Edad</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for animale in animales %}
+            <tr>
+                <td>{{ animale.id }}</td>
+                <td>{{ animale.Nombre }}</td>
+                <td>{{ animale.Especie }}</td>
+                <td>{{ animale.Edad }}</td>
+                <td>
+                    <a href="{{ path('app_animales_show', {'id': animale.id}) }}">show</a>
+                    <a href="{{ path('app_animales_edit', {'id': animale.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_animales_new') }}">Create new</a>
+{% endblock %}
